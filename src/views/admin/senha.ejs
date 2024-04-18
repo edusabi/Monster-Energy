@@ -1,0 +1,44 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger" id="error-message"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+
+<% } %>
+
+<div id="formPainel">
+
+    
+    <h1>Coloque a senha para entrar no Painel de Controle</h1>
+    <form class="formPainel btnPainel" accept="/admin/painelDeControle" method="POST">
+        
+        <div>
+            <input type="password" class="password password1" name="password1" required maxlength="1">
+            <input type="password" class="password password2" name="password2" required maxlength="1">
+            <input type="password" class="password password3" name="password3" required maxlength="1">
+            <input type="password" class="password password4" name="password4" required maxlength="1">
+            <input type="password" class="password password5" name="password5" required maxlength="1">
+            <input type="password" class="password password6" name="password6" required maxlength="1">
+        </div>
+        
+        <div class="buttonDiv">
+            <button type="submit">Entrar</button>
+        </div>
+        
+    </form>
+    
+</div>
+
+<script src="/js/senha.js"></script>

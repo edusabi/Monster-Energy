@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger fade show" role="alert">
+            <%= message %>
+        </div>
+    <% }); %>
+
+    <script>
+        function hideErrorMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+
+        setTimeout(hideErrorMessages, 3500);
+    </script>
+<% } %>
+
+
+
+
+<h2 id="hPerfil">Seus dados</h2>
+<p id="editDados">(Se quiser edite seus dados)</p>
+
+<div class="containerDados">
+
+    <div>
+        <p>Nome:</p>
+        <%= user.nome  %>
+    </div>
+    
+    <div>
+        <p>E-mail:</p>
+        <%= user.email  %>
+    </div>
+    
+    <span id="alterarDados">
+        <a href="/users/alterarDados">Alterar dados</a>
+        <ion-icon name="create-outline"></ion-icon>
+    </span>
+    
+</div>

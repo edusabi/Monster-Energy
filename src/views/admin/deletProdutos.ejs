@@ -1,0 +1,62 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger" id="error-message"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+
+<% } %>
+
+<% if (successMessages.length > 0) { %>
+    <% successMessages.forEach(function(message, index) { %>
+        <div class="alert-sucess" data-unique-id="success-message-<%= index %>"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var successMessages = document.querySelectorAll('.alert-sucess');
+            successMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+<% } %>
+
+<div class="voltarPainel">
+    <a href="/admin/produtosPainel"> < Voltar</a>
+</div>
+
+<div id="AllProdutos">
+
+<div class="AllProdutos">
+
+    <% produtos.forEach(produto => { %>
+        <div>
+            <h2><%= produto.nome %></h2>
+            <p>Preço: <%= produto.preco %></p>
+            <p>Desconto: <%= produto.desconto %></p>
+            <p class="descricao">Descrição: <%= produto.descricao %></p>
+            <!-- Exibindo a imagem -->
+            <% if(produto.imagemBase64) { %>
+                <img src="<%= produto.imagemBase64 %>" alt="Imagem do Produto" style="width:auti; height:200px;">
+            <% } %>
+            <a href="/admin/deletProdutos/:<%=produto._id%>" ><button>Deletar produto</button></a>
+        </div>
+    <% }); %>
+    
+</div>
+
+</div>

@@ -1,0 +1,139 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<div class="voltarPainel">
+    <a href="/meuCarrinho/:<%=user._id%>">< Voltar</a>
+</div>
+
+<style>
+    /* Estilizando o campo de entrada numérico para remover a barra de rolagem */
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+</style>
+
+<script>
+    function limitarQuantidade(input) {
+        // Remove qualquer caractere não numérico
+        input.value = input.value.replace(/\D/g, '');
+        
+        // Limita o comprimento do valor a 2 dígitos
+        if (input.value.length > 2) {
+            input.value = input.value.slice(0, 2);
+        }
+    }
+
+     // Função para incrementar a quantidade de um produto específico
+    function incrementarQuantidadeProduto(produtoId) {
+    var inputQuantidade = document.getElementById('quantidadeProduto_' + produtoId);
+    var valorQuantidade = parseInt(inputQuantidade.value);
+    if (!isNaN(valorQuantidade)) {
+        inputQuantidade.value = valorQuantidade + 1;
+    }
+}
+
+    // Função para decrementar a quantidade de um produto específico
+    function decrementarQuantidadeProduto(produtoId) {
+    var inputQuantidade = document.getElementById('quantidadeProduto_' + produtoId);
+    var valorQuantidade = parseInt(inputQuantidade.value);
+    if (!isNaN(valorQuantidade) && valorQuantidade > 1) {
+        inputQuantidade.value = valorQuantidade - 1;
+    }
+}
+
+</script>
+
+<div class="formEnderecoDiv">
+<form action="/seuEndereco" method="POST" class="formEndereco">
+
+    <label for="">
+        <select name="estado" id="estado"  required>
+            <option value="">Seu estado</option>
+        </select>
+    </label>
+
+    <label for="">
+        <select name="cidade" id="cidade" required>
+            <option value="">Sua cidade</option>
+        </select>
+    </label>
+    
+    <div>
+        <input type="text" name="rua" required class="input">
+        <label for="">Rua</label>
+    </div>
+    
+    <div>
+        <input type="text" name="complemento" required class="input">
+        <label for="">Complemento</label>
+    </div>
+
+    <div>
+        <input type="number" name="numero" required class="input">
+        <label for="">Número da Casa/Apartamento</label>
+    </div>
+
+    <div>
+        <input type="text" class="input" name="telefone" maxlength="15" onkeyup="handlePhone(event)" required>
+        <label for="">Número para contato</label>
+    </div>
+    
+</div>
+
+<div id="produtosEnd">
+    <h2>Produtos</h2>
+</div>
+    <div class="produtosDivV">
+
+        <% produtos.forEach(function(produto){ %>
+            <div class="produtoUnico" data-id="<%= produto._id %>">
+                <h2><%= produto.nome %></h2>
+                <li><%= produto.preco %></li>
+                <li><%= produto.desconto %></li>
+                <li><%= produto.descricao %></li>
+                <div class="fotoIndex fotoIndexCarrinho">
+                    <% if(produto.imagemBase64) { %>
+                        <img src="<%= produto.imagemBase64 %>" alt="Imagem do Produto" style="width:auto; height:200px;">
+                        <% } %>
+                    </div>
+                    
+                    <div class="divInputNome">
+                        <input type="text" name="nomeProduto" value="<%=produto.nome%>" class="nomeProduto" readonly>
+                    </div>
+                    
+                    <div class="quantidadeP">
+                        
+                        <!-- Botão de subtração -->
+                        <ion-icon name="remove" onclick="decrementarQuantidadeProduto('<%= produto._id %>')"></ion-icon>
+                        
+                        <!-- Campo de entrada numérica -->
+                        
+                        <input type="text"  name="quantidade" id="quantidadeProduto_<%= produto._id %>" class="quantidadePinput" value="1" readonly>
+                        <!-- O atributo readonly impede a edição direta do campo de entrada -->
+                        
+                        <!-- Botão de adição -->
+                        <ion-icon name="add" onclick="incrementarQuantidadeProduto('<%= produto._id %>')"></ion-icon>
+                        
+                    </div>
+
+                    <div class="lixoDiv">
+                        <a href="/deletProdCarrinho/:<%= produto._id %>"><ion-icon name="trash" class="lixo"></ion-icon></a>
+                    </div>
+            <% }); %> 
+            <div class="buttonDiv buttonDivEnd">
+                <button type="submit">Enviar endereço</button>
+            </div>
+    </div>
+
+
+</form>
+
+<script src="/js/estados.js"></script>
+<script src="/js/tell.js"></script>

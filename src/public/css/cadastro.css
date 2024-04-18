@@ -1,0 +1,287 @@
+.form{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formEnderecoDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    
+    margin-bottom: 4rem;
+}
+
+#produtosEnd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.formAltera{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.formEndereco,
+.formAtlSenha2,
+.formAlteraDados,
+.formLogin,
+.formRegistro{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.formAlteraDados a,
+.formLogin a,
+.formRegistro a{
+    color: #fff;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0;
+
+    transition: all .4s;
+}
+
+.formAlteraDados a:hover,
+.formLogin a:hover,
+.formRegistro a:hover{
+    color: rgb(0, 255, 0);
+}
+
+.formEndereco h1,
+.formAlteraDados h1,
+.formLogin h1,
+.formRegistro h1{
+    text-align: center;
+    color: rgb(0, 255, 0);
+}
+
+.formEndereco div,
+.formAlteraDados div,
+.formAtlSenha2 div,
+.formAtlSenha div,
+.formLogin div,
+.formRegistro div{
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formEndereco div label,
+.formAtlSenha div label,
+.formAtlSenha2 div label,
+.formAlteraDados div label,
+.formLogin div label,
+.formRegistro div label{
+
+    pointer-events: none;
+
+    color: #fff;
+
+    position: absolute;
+    left: 4px;
+    bottom: 5px;
+    cursor: text;
+    transition: .3s ease-in-out;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formAtlSenha2 div ion-icon,
+.formAlteraDados div ion-icon,
+.formLogin div ion-icon,
+.formRegistro div ion-icon{
+    position: absolute;
+    right: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    color: #fff;
+    transition: .4s;
+}
+
+.formAtlSenha2 div ion-icon:hover,
+.formAlteraDados div ion-icon:hover,
+.formLogin div ion-icon:hover,
+.formRegistro div ion-icon:hover{
+    color: rgb(0, 255, 0);
+}
+
+.formEndereco div input,
+.formAtlSenha2 div input,
+.formAtlSenha div input,
+.formAlteraDados div input,
+.formLogin div input,
+.formRegistro div input{
+    
+    width: 400px;
+    
+    font-size: 1rem;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 2px;
+    padding: 5px;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    outline: 0;
+}
+
+.formEndereco div .input:focus,
+.formEndereco div .input:valid,
+.formAtlSenha2 div .input:focus,
+.formAtlSenha2 div .input:valid,
+.formAtlSenha div .input:focus,
+.formAtlSenha div .input:valid,
+.formAlteraDados div .input:valid,
+.formAlteraDados div .input:focus,
+.formLogin div .input:valid,
+.formLogin div .input:focus,
+.formRegistro div .input:valid,
+.formRegistro div .input:focus{
+    border-bottom: 3px solid rgb(0, 255, 0);
+}
+
+.formEndereco div .input:valid ~ label,
+.formEndereco div .input:focus~ label,
+.formAtlSenha2 div .input:valid ~ label,
+.formAtlSenha2 div .input:focus~ label,
+.formAtlSenha div .input:valid ~ label,
+.formAtlSenha div .input:focus~ label,
+.formAlteraDados div .input:valid ~ label,
+.formAlteraDados div .input:focus ~ label,
+.formLogin div .input:valid ~ label,
+.formLogin div .input:focus ~ label,
+.formRegistro div .input:valid ~ label,
+.formRegistro div .input:focus ~ label{
+    transform: translateY(-24px);
+    color: rgb(0, 255, 0);
+}
+
+.buttonDivEnd button,
+.formPainel button,
+.formAtlSenha button,
+.formAtlSenha2 button,
+.formAlteraDados button,
+.formLogin button,
+.formRegistro button{
+    width: 250px;
+    padding: .7rem;
+}
+
+.buttonDivEnd{
+    margin: 2rem;
+}
+
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.buttonDiv button{
+    border: none;
+    background-color: black;
+    color: rgb(0, 255, 0);
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.formAlteraDados{
+    margin-top: 2rem;
+}
+
+#seuId{
+    transform: translateY(-24px);
+    color: rgb(0, 255, 0);
+}
+
+#seuIdInput{
+    border-bottom: 3px solid rgb(0, 255, 0);
+}
+
+.buttonAtlSenha{
+    margin-top: 1.5rem;
+}
+
+.quantidadePinput{
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: #fff;
+    height: 100px;
+    text-align: center;
+    outline: 0;
+    width: 50px;
+}
+
+.quantidadeP{
+    gap: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantidadeP ion-icon{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.nomeProduto{
+    width: 700px;
+    background-color: transparent;
+    text-align: center;
+    outline: 0;
+    color: #fff;
+    max-width: auto;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    border: 0;
+}
+
+.divInputNome{
+    display: flex;
+    justify-content: center;
+}
+
+.lixo{
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.lixoDiv{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 790px){
+
+    .formEndereco div input,
+    .formAtlSenha2 div input,
+    .formAtlSenha div input,
+    .formAlteraDados div input,
+    .formLogin div input,
+    .formRegistro div input{
+        width: 350px;
+    }
+
+    .formAltera{
+        height: 60vh;
+    }
+
+    .produtosDivV > .produtoUnico {
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,217 @@
+.descricao{
+    max-width: 700px;
+    text-align: justify;
+}
+
+#formPainel{
+    /* height: 70vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#formPainel h1{
+    margin: 3rem 0;
+    text-align: center;
+    color: #fff;
+}
+
+#formPainel form{
+    display: flex;
+    flex-direction: column;
+}
+
+.formPainel input{
+    width: 50px;
+    height: 50px;
+    outline: none;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.btnPainel button{
+    margin: 3rem 0;
+}
+
+
+.listCat{
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.listCat a{
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+
+.formAddProduto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .5rem;
+}
+
+.formAddProduto{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.formAddProduto h1{
+    text-align: center;
+    color: rgb(0, 255, 0);
+}
+
+.formAddProduto div{
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formAddProduto div label{
+
+    pointer-events: none;
+    color: #fff;
+
+    position: absolute;
+    left: 4px;
+    bottom: 5px;
+    cursor: text;
+    transition: .3s ease-in-out;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.formAddProduto div input{
+    width: 400px;
+    
+    font-size: 1rem;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 2px;
+    padding: 5px;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    outline: 0;
+}
+
+.formAddProduto div .input:valid,
+.formAddProduto div .input:focus{
+    border-bottom: 3px solid rgb(0, 255, 0);
+}
+
+.formAddProduto div .input:valid ~ label,
+.formAddProduto div .input:focus ~ label{
+    transform: translateY(-24px);
+    color: rgb(0, 255, 0);
+}
+
+.formAddProduto button{
+    width: 250px;
+    padding: .7rem;
+}
+
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.buttonDiv button{
+    border: none;
+    background-color: black;
+    color: rgb(0, 255, 0);
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#preview{
+    margin-bottom: 2rem;
+}
+
+#AllProdutos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AllProdutos{
+    display: flex;
+    flex-direction: column;
+}
+
+.AllProdutos div{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 2rem;
+}
+
+.AllProdutos div button{
+    margin-top: .5rem;
+
+    width: 250px;
+    padding: .7rem;
+
+    border: none;
+    background-color: black;
+    color: rgb(0, 255, 0);
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.voltarPainel{
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.voltarPainel a{
+    color: #fff;
+}
+
+
+@media (max-width: 790px){
+
+    #formPainel {
+        height: 80vh;
+    }
+
+    .containerDados {
+        height: 50vh;
+    }
+
+    .listCat {
+        flex-direction: column;
+        margin: 110px;
+        gap: 15rem;
+    }
+
+    .AllProdutos{
+        text-align: center;
+    }
+
+    .descricao {
+        max-width: 350px;
+    }
+
+    .alterarProdForm{
+        margin-top: 5rem;
+    }
+    
+    .formAddProduto{
+        margin-top: 5rem;
+
+    }
+
+}

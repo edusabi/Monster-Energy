@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<div class="voltarPainel">
+    <a href="/users/perfil">< Voltar</a>
+</div>
+
+<div class="formAltera">
+
+<form action="/users/alterarDados" method="POST" class="formAlteraDados">
+            
+    <h1>Atualize seus dados</h1>
+
+    <div>
+        <input type="text" id="seuIdInput" name="txtId" readonly value="<%=user._id%>">
+    </div>
+
+    <div>
+        <input type="text" name="nome" required class="input" autocomplete="none" value="<%=user.nome%>">
+        <label for="">Nome</label>
+    </div>
+
+    <div>
+        <input type="email" name="email" required class="input" autocomplete="none" value="<%=user.email%>">
+        <label for="">E-mail</label>
+    </div>
+    
+
+<div class="buttonDiv">
+    <button type="submit">Atualizar</button>
+</div>
+
+</form>
+
+</div>

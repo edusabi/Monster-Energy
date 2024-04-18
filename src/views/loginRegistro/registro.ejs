@@ -1,0 +1,67 @@
+<%- include('../partials/head') %>
+
+<div class="voltarPainel">
+    <a href="/">< Voltar</a>
+</div>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger fade show" role="alert">
+            <%= message %>
+        </div>
+    <% }); %>
+
+    <script>
+        function hideErrorMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+
+        setTimeout(hideErrorMessages, 3500);
+    </script>
+<% } %>
+
+<div class="form">
+    
+    
+<form action="/users/registro" method="POST" class="formRegistro">
+        
+        <h1>Faça seu cadastro</h1>
+
+        <div>
+            <input type="text" name="nome" required class="input" autocomplete="none">
+            <label for="">Nome</label>
+        </div>
+        
+        <div>
+            <input type="email" name="email" required class="input" autocomplete="none" >
+            <label for="">E-mail</label>
+        </div>
+        
+        <div>
+            <input type="password" id="senha" name="password" required class="input">
+            <label for="">Senha</label>
+            <ion-icon name="eye-outline" id="olhosAbrt1"></ion-icon>
+        </div>
+        
+        <div>
+            <input type="password" id="confirmSenha" name="confirmPassword" required class="input">
+            <label for="">Confirmar senha</label>
+            <ion-icon name="eye-outline" id="olhosAbrt2"></ion-icon>
+    </div>
+    
+    <div class="buttonDiv">
+        <button type="submit">Enviar cadastro</button>
+    </div>
+    
+    <div>
+        <a href="/users/login"><Nav>Já possui conta? Clique aqui</Nav></a>
+    </div>
+
+</form>
+
+</div>
+
+<script src="/js/cadastroRegistro.js"></script>

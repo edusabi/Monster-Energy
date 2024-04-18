@@ -1,0 +1,84 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger" id="error-message"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+
+<% } %>
+
+<% if (successMessages.length > 0) { %>
+    <% successMessages.forEach(function(message, index) { %>
+        <div class="alert-sucess" data-unique-id="success-message-<%= index %>"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var successMessages = document.querySelectorAll('.alert-sucess');
+            successMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+<% } %>
+
+<div class="voltarPainel">
+    <a href="/admin/produtosPainel"> < Voltar</a>
+</div>
+
+<div>
+
+    <form action="/admin/addProdutos" method="POST" enctype="multipart/form-data" class="formAddProduto">
+
+        <h1>Adicione um produto</h1>
+
+        <div>
+            <input type="text" required class="input" name="nome">
+            <label for="">Nome</label>
+        </div>
+        
+        <div>
+            <input type="text" required class="input" name="preco">
+            <label for="">Preço</label>
+        </div>
+        
+        <div>
+            <input type="text" class="input" name="desconto">
+            <label for="">Desconto se houver</label>
+        </div>
+        
+        <div>
+            <input type="text" required class="input" name="descricao">
+            <label for="">Descrição</label>
+        </div>
+        
+        <div class="divFoto">
+            <input type="file" id="inputFoto" name="imagem" required class="input" accept="image/*">
+        </div>
+    
+        
+        <div class="buttonDiv">
+            <button type="submit">Cadastrar</button>
+        </div>
+        
+        <div id="preview"</div>
+
+    </form>
+
+
+</div>
+
+<script src="/js/senha.js"></script>

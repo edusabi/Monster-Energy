@@ -1,0 +1,113 @@
+<%- include('./partials/head') %>
+<%- include('./partials/navbar') %>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger" id="error-message"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+
+<% } %>
+
+<% if (successMessages.length > 0) { %>
+    <% successMessages.forEach(function(message, index) { %>
+        <div class="alert-sucess" data-unique-id="success-message-<%= index %>"><%= message %></div>
+    <% }); %>
+
+    <script>
+        function hideSuccessMessages() {
+            var successMessages = document.querySelectorAll('.alert-sucess');
+            successMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+
+        setTimeout(hideSuccessMessages, 3500);
+    </script>
+<% } %>
+
+<h1 style="text-align: center; color: #fff; margin-top: 1rem;">Nossos produtos</h1>
+
+<div class="navProdutos">
+
+    <div class="produtosDivV">
+
+            <% produtos.forEach(function(produto){ %>
+                <div class="produtoUnico" data-id="<%= produto._id %>">
+                    <h2><%= produto.nome %></h2>
+                    <li><%= produto.preco %></li>
+                    <li><%= produto.desconto %></li>
+                    <li><%= produto.descricao %></li>
+                    <div class="fotoIndexDiv">
+                        <div class="fotoIndex">
+                            <% if(produto.imagemBase64) { %>
+                                <img src="<%= produto.imagemBase64 %>" alt="Imagem do Produto" style="height:200px;">
+                                <% } %>
+                        </div>
+                    </div>
+                    <% if(user) { %>
+                        <div class="buttonDiv">
+                            <button class="buttonProduto">Adicionar ao carrinho</button>
+                        </div>
+                        <% } %>
+                </div>
+            <% }); %>
+
+            <script>
+
+document.addEventListener("click", async function(event) {
+    if (event.target.classList.contains("buttonProduto")) {
+        var idDoProduto = getIdDoProdutoPeloBotao(event.target);
+        if (idDoProduto !== null) {
+            try {
+                // Fazer uma requisição ao servidor para buscar o produto no MongoDB
+                const response = await fetch("/buscarProduto/" + idDoProduto);
+                if (response.ok) {
+                    const produto = await response.json();
+                    // Atualizar o contador de produtos no carrinho no navegador
+                    atualizarContador(produto.quantidadeNoCarrinho);
+                } else {
+                    console.error('Erro ao buscar o produto');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar o produto:', error);
+            }
+        }
+        location.reload();
+        clicarButton(event); // Incrementa o contador quando um produto é adicionado ao carrinho
+    }
+});
+
+function atualizarContador(quantidade) {
+    const contador = document.getElementById("contador");
+    contador.textContent = quantidade;
+}
+
+// Função para obter o ID do produto a partir do botão
+function getIdDoProdutoPeloBotao(botao) {
+    var produtoUnico = botao.closest(".produtoUnico");
+    if (produtoUnico) {
+        var idDoProduto = produtoUnico.getAttribute("data-id");
+        if (idDoProduto) {
+            return idDoProduto;
+        }
+    }
+    return null;
+}
+
+
+            </script>
+        
+    </div>
+</div>
+
+<script src="/js/addCarrinho.js"></script>

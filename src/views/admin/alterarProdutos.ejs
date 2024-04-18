@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<div class="voltarPainel">
+    <a href="/admin/produtosPainel"> < Voltar</a>
+</div>
+
+<div class="alterarProdForm">
+
+    <form action="/admin/editProdutos/:<%=produtos._id%>" method="POST" enctype="multipart/form-data" class="formAddProduto">
+        <h1>Altere o produto</h1>
+        <div>
+            <input type="text" required class="input" name="nome" value="<%=produtos.nome%>">
+            <label for="">Nome</label>
+        </div>
+        
+        <div>
+            <input type="text" required class="input" name="preco" value="<%=produtos.preco%>">
+            <label for="">Preço</label>
+        </div>
+        
+        <div>
+            <input type="text" class="input" name="desconto" value="<%=produtos.desconto%>">
+            <label for="">Desconto se houver</label>
+        </div>
+        
+        <div>
+            <input type="text" required class="input" name="descricao" value="<%=produtos.descricao%>">
+            <label for="">Descrição</label>
+        </div>
+        
+        <div class="divFoto">
+            <input type="file" id="inputFoto" name="imagem" required class="input" accept="image/*">
+        </div>
+
+        
+        <div class="buttonDiv">
+            <button type="submit">Alterar</button>
+        </div>
+        
+        
+        <div id="preview"</div>
+
+    </form>
+
+
+</div>
+
+<script src="/js/senha.js"></script>

@@ -1,0 +1,43 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+body{
+    background-color: #000000da;
+}
+
+@font-face{
+    font-family: greenEnergy;
+    src: url(Green_Energy.ttf);
+}
+
+.alert-danger{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: red;
+
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.alert-sucess{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: rgb(5, 255, 5);
+
+    color: #fff;
+    letter-spacing: 1px;
+}

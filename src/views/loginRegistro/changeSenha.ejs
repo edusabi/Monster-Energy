@@ -1,0 +1,45 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<div class="formAltera">
+
+    <form action=""  method="POST" class="formAtlSenha2">
+
+        <div>
+            <input type="password" id="senha" name="password" autocomplete="none" class="input" required>
+            <label for="">Digite sua nova senha</label>
+            <ion-icon name="eye-outline" id="olhosAbrt1"></ion-icon>
+        </div>
+        
+        <div>
+            <input type="password" id="confirmSenha" name="confirmPassword" autocomplete="none" class="input" required>
+            <label for="">Confirme sua nova senha</label>
+            <ion-icon name="eye-outline" id="olhosAbrt2"></ion-icon>
+        </div>
+
+        <div class="buttonDiv buttonAtlSenha">
+            <button type="submit">Mudar senha</button>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+    // Pega a URL atual
+    const url = window.location.href;
+    
+    // Extrai o ID do usuário da URL
+    const userId = url.substring(url.lastIndexOf('/') + 1);
+    
+    // Checa se o ID é válido e não é apenas o placeholder ":"
+    if(userId && userId !== ":") {
+        // Encontra o formulário pelo seu class name
+        const form = document.querySelector('.formAtlSenha2');
+        
+        // Altera o action do formulário para incluir o ID do usuário
+        form.action = `/users/changeSenha/${userId}`;
+    }
+    </script>
+
+<script src="/js/cadastroRegistro.js"></script>

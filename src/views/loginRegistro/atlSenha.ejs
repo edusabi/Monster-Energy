@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(function(message) { %>
+        <div class="alert-danger fade show" role="alert">
+            <%= message %>
+        </div>
+    <% }); %>
+
+    <script>
+        function hideErrorMessages() {
+            var errorMessages = document.querySelectorAll('.alert-danger');
+            errorMessages.forEach(function(message) {
+                message.style.display = 'none';
+            });
+        }
+
+        setTimeout(hideErrorMessages, 3500);
+    </script>
+<% } %>
+
+<div class="formAltera">    
+
+    <form action="/users/atlSenha" method="POST" class="formAtlSenha">
+
+        <div>
+            <input type="email" name="email" autocomplete="none" class="input" required>
+            <label for="">Digite seu E-mail</label>
+        </div>
+
+        <div class="buttonDiv buttonAtlSenha">
+            <button type="submit">Recuperar senha</button>
+        </div>
+
+    </form>
+
+</div>

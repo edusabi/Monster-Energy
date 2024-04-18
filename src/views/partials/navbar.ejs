@@ -1,0 +1,45 @@
+<header>
+
+    <div class="logo">
+        <h1>MONSTER</h1>
+        <img src="/img/logo.png" alt="">
+    </div>
+
+    <div class="navbar">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+
+    <div class="itens">
+
+        <div>
+            <ul class="list-itens">
+                <a href="/" id="home"><li>Home</li></a>
+                <% if(user){ %>
+                    <a href="/admin/painelDeControle"><li>Admin</li></a>
+                    <a href="/users/perfil"><li>Perfil</li></a>
+                        <a href="/users/logout" id="sair"><li>Sair</li>
+                        <ion-icon name="enter-outline"></ion-icon></a>
+                <% }else{ %>
+                    <a href="/users/login"><li>Entrar</li></a>
+                    <a href="/users/registro"><li>Cadastre-se</li></a>
+                    <% } %>
+                </ul>
+            </div>
+            
+            <% if(user){ %>
+                <a href="/meuCarrinho/:<%=user._id%>">
+                <div id="carrinho">
+                    <p id="contador"><%=user.produtoId.length%></p>
+                    <ion-icon name="cart-outline"></ion-icon>
+                </div>
+            </a>
+            <% }%>
+            
+
+    </div>
+
+</header>
+
+<script src="/js/navbar.js"></script>
