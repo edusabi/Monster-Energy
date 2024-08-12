@@ -257,7 +257,7 @@ users.post("/changeSenha/:id", async (req, res) => {
             const passwordHash = await bcryptjs.hash(password, salt);
 
             await RegistroUser.findByIdAndUpdate({ _id: novaStr }, { password: passwordHash });
-            aesit RegistroUser.save()
+            await RegistroUser.save()
 
             req.flash("success", "Senha atualizada com sucesso!");
             res.redirect("/users/login");
